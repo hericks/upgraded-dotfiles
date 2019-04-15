@@ -51,3 +51,5 @@ echo -ne '\e[5 q'
 preexec() {
   echo -ne '\e[5 q'
 }
+
+export PATH=/usr/local/bin:$PATH

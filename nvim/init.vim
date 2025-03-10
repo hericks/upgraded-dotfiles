@@ -91,72 +91,6 @@
 
   " }}}
 
-  " LeftVerticalMotion(stepSize) {{{
-    function! LeftVerticalMotion(stepSize)
-      " Original cursor position/column
-      let originalPosition=getcurpos()
-      let originalColumn=originalPosition[2]
-
-      " Leftmost non-whitespace column
-      normal! ^
-      let leftmostNWColumn=getcurpos()[2]
-
-      " Rightmost non-whitespace column
-      normal! g_
-      let rightmostNWColumn=getcurpos()[2]
-
-      " Rightmost column
-      normal! $
-      let rightmostColumn=getcurpos()[2]
-
-      if (originalColumn > rightmostNWColumn)
-        normal g_
-      elseif (originalColumn > leftmostNWColumn + a:stepSize)
-        call setpos('.', originalPosition)
-        execute "normal!" a:stepSize . "h"
-      elseif (originalColumn > leftmostNWColumn)
-        normal! ^
-      elseif (originalColumn > 1)
-        normal! 0
-      else
-        normal! $
-      endif
-    endfunction
-    " }}}
-
-  " RightVerticalMotion(stepSize) {{{
-    function! RightVerticalMotion(stepSize)
-      " Original cursor position/column
-      let originalPosition=getcurpos()
-      let originalColumn=originalPosition[2]
-
-      " Leftmost non-whitespace column
-      normal! ^
-      let leftmostNWColumn=getcurpos()[2]
-
-      " Rightmost non-whitespace column
-      normal! g_
-      let rightmostNWColumn=getcurpos()[2]
-
-      " Rightmost column
-      normal! $
-      let rightmostColumn=getcurpos()[2]
-
-      if (originalColumn < leftmostNWColumn)
-        normal! ^
-      elseif (originalColumn < rightmostNWColumn - a:stepSize)
-        call setpos('.', originalPosition)
-        execute "normal!" a:stepSize . "l"
-      elseif (originalColumn < rightmostNWColumn)
-        normal! g_
-      elseif (originalColumn < rightmostColumn)
-        normal! $
-      else
-        normal! 0
-      endif
-    endfunction
-  " }}}
-
 " }}}
 
 " Keymaps {{{
@@ -171,35 +105,14 @@
     nnoremap <silent><Leader>rv :source $MYVIMRC<CR>:noh<return><ESC>:echo "Reload finished."<CR>
     nnoremap <silent><Leader>av :call OpenInVSplitIfBufferDirty($MYVIMRC)<CR>
 
-  " Quick escape
-    inoremap kj <ESC>
-
   " Move through wrapped lines
     noremap j       gj
     noremap <DOWN>  gj
     noremap k       gk
     noremap <UP>    gk
 
-  " Improved movement
-    noremap J 5j
-    noremap K 5k
-    noremap <silent>H :call LeftVerticalMotion(5)<CR>
-    noremap <silent>L :call RightVerticalMotion(5)<CR>
-
-  " Enter commands quickly
-    nnoremap , :
-
   " Use marks position instead of mark line
     nnoremap ' `
-
-  " Enter special chars quickly
-    inoremap ## \
-    inoremap ö {
-    inoremap Ö }
-    inoremap ä (
-    inoremap Ä )
-    inoremap ü [
-    inoremap Ü ]
 
   " Navigate splits
     nnoremap <Leader>h <C-W>h

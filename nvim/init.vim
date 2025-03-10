@@ -74,7 +74,6 @@
 
   if filereadable(expand("$HOME/.config/nvim/plugged/vim-one"))
     let g:airline_theme='one'
-    echo "Hello"
   endif
 
 " }}}

@@ -53,3 +53,6 @@ preexec() {
 }
 
 export PATH=/usr/local/bin:$PATH
+
+# enable UV
+source "$HOME/.local/bin/env"

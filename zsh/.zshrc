@@ -1,6 +1,3 @@
-# Use vim binkey
-bindkey -v
-
 # Random options
 setopt NO_BEEP
 

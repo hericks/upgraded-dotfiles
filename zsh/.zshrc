@@ -23,6 +23,9 @@ fi
 # Activate vim mode.
 bindkey -v
 
+# Enable reverse history search
+bindkey "^R" history-incremental-search-backward
+
 # Remove mode switching delay.
 KEYTIMEOUT=1
 

@@ -1,7 +1,8 @@
 # Random options
 setopt NO_BEEP
 
-PS1='%B%F{green}%n@%M%F{red} %~$%f%b '
+NEWLINE=$'\n'
+PS1="%B%F{green}%n@%M%F{red} %~%f%b${NEWLINE}$ "
 
 # History
 HISTSIZE=1000

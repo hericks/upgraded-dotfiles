@@ -1,3 +1,6 @@
+# enable brew shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Random options
 setopt NO_BEEP
 
